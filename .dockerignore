@@ -1,0 +1,22 @@
+# Ignore Python bytecode files
+__pycache__/
+
+# Ignore local development files and directories
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite
+*.log
+*.env
+.vscode/
+.idea/
+venv/
+__pycache__/
+db.sqlite3
+
+# Ignore Docker-related files and directories
+.dockerignore
+Dockerfile
+docker-compose.yml
+.docker/

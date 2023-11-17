@@ -1,0 +1,9 @@
+<div class="d-flex my-3 justify-content-center">
+    {% include "base/snippets/paginator.html" %}
+</div>
+    {% for instance in ads_data %}
+        {% include 'base/snippets/card.html'%}
+    {% endfor %}
+<div class="d-flex my-3 justify-content-center">
+    {% include "base/snippets/paginator.html" %}
+</div>

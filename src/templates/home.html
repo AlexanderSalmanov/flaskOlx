@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 align="center" class="my-2 py-2">Welcome!</h1>
+
+    <div class="m-4 p-4">
+        <h3>What is MiniOLX?</h3>
+        <p>MiniOLX is a mini version of OLX. It is a platform where you can search and view products from the original OLX site.</p>
+        <p>MiniOLX is a project developed by me, so everything is plain and simple. I hope you will like it!</p>
+
+        <div class="main-search-bar py-5">
+            <h3 align="center" class="mb-3">What are you looking for?</h3>
+            <form action="/search" method="GET">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="keyword-search" placeholder="Search for adverts...">
+                    <select class="form-select" id="categorySelect" name="category-search">
+                        <option selected value="all">All categories</option>
+                        {% for category in categories %}
+                           <option value="{{category}}">{{category}}</option>     
+                        {% endfor %}
+                      </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

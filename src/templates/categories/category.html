@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Category <i>{{category_name}}</i> adverts.</h1>
+        <p class="col-md-8 fs-4">Total pages found: {{num_pages}}</p>
+    </div>
+
+    {% include "base/snippets/advert_list.html" %}
+{% endblock content %}
