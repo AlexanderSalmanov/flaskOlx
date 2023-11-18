@@ -21,7 +21,6 @@ def create_app():
     app_ = Flask(
         __name__,
         instance_relative_config=True,
-        template_folder=constants.TEMPLATE_FOLDER,
     )
     app_.config.from_object(config)
 

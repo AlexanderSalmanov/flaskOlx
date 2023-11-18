@@ -26,12 +26,15 @@ def search():
 
     target_url = f"/search/?keyword-search={search_input}?category-search={category}"
 
+    # Explicitly get the human-readable category name for the template
     category_display_name = (
         category
         if category == "all"
         else constants.CATEGORY_NAMES_BY_ROUTE.get(category)
     )
 
+    # Check if there are existing ads for the given search request;
+    # If there are - pull them directly from the database and render them
     search_obj = Search.query.filter_by(keyword=search_input).first()
     if not search_obj:
         search_obj = Search.create(keyword=search_input)
@@ -58,6 +61,7 @@ def search():
             },
         )
 
+    # Instantiate pageParser object and retrieve the data from the page
     page_parser = PageParser(
         search_keyword=search_input, page_number=page_number, category_name=category
     )
@@ -75,6 +79,8 @@ def search():
     if not search_obj.num_pages or search_obj.num_pages != num_pages:
         search_obj.update(num_pages=num_pages)
 
+    # Instantiate AdvertBuilder object and build the ads from OLX response;
+    # Save new ads to the database
     ads_builder = AdvertBuilder(ads_data)
     ads_data_cleaned = ads_builder.get_serialized_ads(ads_data)
     ads_builder.create_adverts(db, search=search_obj, page_number=page_number)

@@ -1,3 +1,4 @@
+import os
 from dataclasses import dataclass
 
 from envparse import env
@@ -8,6 +9,8 @@ class Config:
     SECRET_KEY: str = env("SECRET_KEY")
     SQLALCHEMY_DATABASE_URI: str = env("SQLALCHEMY_DATABASE_URI")
     SQLALCHEMY_TRACK_MODIFICATIONS: bool = False
+    TEMPLATE_FOLDER: str = os.path.abspath("./templates")
+
 
     def __getitem__(self, value):
         return self.__dict__.get(value)
