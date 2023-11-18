@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 
-{% block title %} Log In {% endblock title %}
+{% block title %} Вхід {% endblock title %}
 
 {% block content %}
 
-    <h2>Log In</h2>
+    <h2>Увійти</h2>
 
     <form action="/auth/login" method="POST">
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <label for="exampleFormControlInput1" class="form-label">Email-адреса</label>
             <input type="email" class="form-control" name="login-email" placeholder="name@example.com">
           </div>
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Password</label>
+            <label for="exampleFormControlInput1" class="form-label">Пароль</label>
             <input type="password" class="form-control" name="login-pass">
           </div>
 
-          <button class="btn btn-primary btn-lg" type="submit">Log In</button>
+          <button class="btn btn-primary btn-lg" type="submit">Увійти</button>
     </form>
 
 {% endblock content %}

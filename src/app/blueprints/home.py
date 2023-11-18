@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template
 
 
-bp = Blueprint("hello", __name__, url_prefix="/")
+bp = Blueprint("home", __name__, url_prefix="/")
 
 
 @bp.route("/")
-def hello():
+def home():
     return render_template("home.html")

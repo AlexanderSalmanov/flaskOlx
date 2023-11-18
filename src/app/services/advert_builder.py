@@ -19,6 +19,9 @@ class AdvertBuilder:
         self._build(ads)
         return self.serialized_ads
 
+    def create_adverts(self, db, **kwargs):
+        self._create_advert_objects(db, **kwargs)
+
     def _build(self, ads):
         self.serialized_ads = [self._serialize_ad_entry(ad) for ad in ads]
 
@@ -26,10 +29,15 @@ class AdvertBuilder:
         if isinstance(ad_entry, Advert):
             ad_entry = ad_entry.__dict__
 
-        return {k: v for k, v in ad_entry.items() if k in constants.ADS_INTERNAL_KEYS}
-
-    def create_adverts(self, db, **kwargs):
-        self._create_advert_objects(db, **kwargs)
+        serialized_ad = {
+            k: v for k, v in ad_entry.items() if k in constants.ADS_INTERNAL_KEYS
+        }
+        return self._clean_ad_description(serialized_ad)
+    
+    def _clean_ad_description(self, ad):
+        cleaned_ad_description = ad.get("description").replace("<br />", "")
+        ad["description"] = cleaned_ad_description
+        return ad
 
     def _create_advert_objects(self, db, **kwargs):
         created_objs = 0

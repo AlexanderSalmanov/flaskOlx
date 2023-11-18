@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %} Нічого не знайдено{% endblock title %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Результатів не знайдено</h1>
+            <p>Вибачте, але за Вашим запитом нічого не знайдено. Спробуйте знов із іншими ключовими словами.</p>
+            <p>Пошуковий запит: {{search_input}}</p>
+            <p><a href="{{url_for('home.home')}}">Назад на головну</a></p>
+        </div>
+    </div>  
+
+{% endblock content %}

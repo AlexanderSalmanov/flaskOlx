@@ -19,7 +19,7 @@ Previously discovered results are stored in PostgreSQL database, so that they ar
 ## Local installation steps
 1. Clone this repo to the desired directory: `git clone <repo_link>`;
 2. Navigate to the `flaskOlx` subdirectoryL `cd flaskOlx`;
-3. Copy the contents of `src/.env.example` to `.src/.env`;
+3. Copy the contents of `src/.env.example` to `.src/.env`; also copy `db.env.example` to `db.env`;
 4. Build the project with `docker-compose build`;
 5. Run the project with `docker-compose up`;
 6. Open your browser and go to `localhost:5000`;

@@ -3,8 +3,10 @@ from flask import Blueprint, render_template, request
 
 from app.services.advert_builder import AdvertBuilder
 from app.services.parse_page import PageParser
-from extensions import db
 from models.commerce import Advert, Category
+
+from extensions import db
+from app import constants
 
 
 bp = Blueprint("categories", __name__, url_prefix="/categories")
@@ -17,6 +19,7 @@ def category_adverts(category_name):
     category = Category.query.filter_by(name=category_name).first()
     if not category:
         category = Category.create(name=category_name)
+    category_display_name = constants.CATEGORY_NAMES_BY_ROUTE.get(category_name)
 
     existing_ads = Advert.query.filter_by(
         category=category, page_number=page_number
@@ -28,7 +31,7 @@ def category_adverts(category_name):
         ads_data_cleaned = ad_builder.get_serialized_ads(existing_ads)
         return render_template(
             "categories/category.html",
-            category_name=category_name,
+            category_name=category_display_name,
             ads_data=ads_data_cleaned,
             num_pages=category.num_pages,
             current_page=page_number,
@@ -53,7 +56,7 @@ def category_adverts(category_name):
 
     return render_template(
         "categories/category.html",
-        category_name=category_name,
+        category_name=category_display_name,
         ads_data=ads_data_cleaned,
         num_pages=num_pages,
         current_page=page_number,

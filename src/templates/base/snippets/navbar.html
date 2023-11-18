@@ -7,28 +7,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                <a class="nav-link active" aria-current="page" href="/">Домашня сторінка</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Categories
+                  Категорії
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   {% for category in categories %}
-                    <li><a class="dropdown-item" href="/categories/{{category}}">{{category}}</a></li>
+                    <li><a class="dropdown-item" href="/categories/{{category[-1]}}">{{category[0]}}</a></li>
                   {% endfor %}
                 </ul>
               </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Authentication
+                Автентикація
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   {% if current_user.is_authenticated %}
-                  <li><a class="dropdown-item" href="/auth/logout">Log Out</a></li>
+                  <li><a class="dropdown-item" href="/auth/logout">Вийти з облікового запису</a></li>
                   {% else %}
-                  <li><a class="dropdown-item" href="/auth/login">Login</a></li>
-                  <li><a class="dropdown-item" href="/auth/signup">Signup</a></li>
+                  <li><a class="dropdown-item" href="/auth/login">Авторизуватися</a></li>
+                  <li><a class="dropdown-item" href="/auth/signup">Створити обліковий запис</a></li>
                   {% endif %}
                 </ul>
             </li>

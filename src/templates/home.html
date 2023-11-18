@@ -1,25 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1 align="center" class="my-2 py-2">Welcome!</h1>
+    <h1 align="center" class="my-2 py-2">Ласкаво просимо!</h1>
 
     <div class="m-4 p-4">
-        <h3>What is MiniOLX?</h3>
-        <p>MiniOLX is a mini version of OLX. It is a platform where you can search and view products from the original OLX site.</p>
-        <p>MiniOLX is a project developed by me, so everything is plain and simple. I hope you will like it!</p>
+        <h3>Що таке MiniOLX?</h3>
+        <p>MiniOLX - це мініатюрна версія оригінального OLX. Дана платформа дозволяє переглядати оголошення напряму з сайту OLX.</p>
+        <p>MiniOLX - це мій власний проєкт, тому тут усе максимально просто та зрозуміло. Сподіваюся, що він Вам сподобається!</p>
 
         <div class="main-search-bar py-5">
-            <h3 align="center" class="mb-3">What are you looking for?</h3>
+            <h3 align="center" class="mb-3">Що будемо шукати?</h3>
             <form action="/search" method="GET">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="keyword-search" placeholder="Search for adverts...">
+                    <input type="text" class="form-control" name="keyword-search" placeholder="Шукати оголошення..." required>
                     <select class="form-select" id="categorySelect" name="category-search">
-                        <option selected value="all">All categories</option>
+                        <option selected value="all">Усі категорії</option>
                         {% for category in categories %}
-                           <option value="{{category}}">{{category}}</option>     
+                           <option value="{{category[-1]}}">{{category[0]}}</option>     
                         {% endfor %}
                       </select>
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">Search</button>
+                        <button class="btn btn-outline-secondary" type="submit">Пошук</button>
                     </div>
                 </div>
             </form>
