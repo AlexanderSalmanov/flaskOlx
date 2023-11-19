@@ -6,6 +6,7 @@ from app.blueprints.home import bp as home_bp
 from app.blueprints.auth import bp as auth_bp
 from app.blueprints.categories import bp as categories_bp
 from app.blueprints.search import bp as search_bp
+from app.blueprints.adverts import bp as adverts_bp
 
 from models.auth import User
 from models.commerce import Advert, Category, Search
@@ -28,6 +29,7 @@ def create_app():
     app_.register_blueprint(auth_bp)
     app_.register_blueprint(categories_bp)
     app_.register_blueprint(search_bp)
+    app_.register_blueprint(adverts_bp)
 
     db.init_app(app_)
     return app_, db

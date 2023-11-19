@@ -26,6 +26,7 @@ PAGE_NUMBER = "?page={}".format
 RE_PATTERN = re.compile(r'window\.__PRERENDERED_STATE__\s*=\s*("(?:\\.|[^"])*");')
 ADS_INTERNAL_KEYS = [
     "id",
+    "url",
     "user",
     "title",
     "description",

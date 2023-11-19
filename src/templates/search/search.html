@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% block title %} Пошук{% endblock title %}
+
 {% block content %}
     <div class="container-fluid py-5">
         <h1 class="display-5 fw-bold">Результати пошуку для запиту <b>{{search_input}}</b></h1>
@@ -8,5 +10,5 @@
             <p class="col-md-8 fs-4">Обрана категорія: <b>{{category_name}}</b></p>
         {% endif %}
     </div>
-    {% include "base/snippets/advert_list.html" %}
+    {% include "adverts/snippets/advert_list.html" %}
 {% endblock content %}

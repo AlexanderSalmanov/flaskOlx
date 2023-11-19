@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %} {{advert.title}} {% endblock title %}
+
+{% block content %}
+
+<div class="row my-5">
+    <div class="col-md-8">
+        <div class="advert-images-carousel">
+            <div id="adCarouselControls" class="carousel slide" data-bs-ride="carousel">
+                {% if advert.photos %}
+                  <div class="carousel-indicators">
+                    {% for photo in advert.photos %}
+                      {% if loop.index == 1 %}
+                          <button type="button" data-bs-target="#adCarouselControls" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      {% else %}
+                          <button type="button" data-bs-target="#adCarouselControls" data-bs-slide-to="{{loop.index - 1}}" aria-label="Slide 2"></button>
+                      {% endif %}
+                    {% endfor %}
+                  </div>  
+                {% endif %}
+                <div class="carousel-inner">
+                    {% if advert.photos %}
+                        {% for photo in advert.photos %}
+                            <div class="carousel-item {% if loop.index == 1 %}active{% endif %}">
+                                <img src="{{photo}}" class="d-block w-100" alt="..." height="750px" width="500px">
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                            <div class="carousel-item active">
+                                <img src="https://placehold.co/1000x750" class="d-block w-100" alt="No image pinned">
+                            </div>
+                    {% endif %}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#adCarouselControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#adCarouselControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <p class="text-muted fw-1"><i class="fa fa-calendar"></i> Опубліковано {{advert.created_at}}</p>
+        <p class="text-muted"><i class="fa fa-map-pin"></i> {{advert.location.cityName}}, {{advert.location.regionName}}</p>
+        <p class="text-muted">
+            <a href="{{advert.url}}" target="_blank" style="color: inherit;" >Переглянути на OLX</a>
+        </p>
+        <hr>
+        <p class="h3 fw-bold py-2">{{advert.title}}</p>
+        <p class="h3 fw-bold py-2">{{advert.price.displayValue}}</p>
+        <p class="h3 fw-bold py-2">ОПИС</p>
+        <div class="advert-description">
+            <p class="h5 py-2">{{advert.description}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

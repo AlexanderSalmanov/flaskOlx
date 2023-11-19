@@ -25,7 +25,8 @@ class Search(db.Model, CRUDMixin, DateMixin):
 
 
 class Advert(db.Model, CRUDMixin, DateMixin):
-    external_id = db.Column(db.String(64), unique=True, nullable=False)
+    id = db.Column(db.String(64), unique=True, nullable=False)
+    url = db.Column(db.String(512), nullable=False)
     author = db.Column(JSON, default={})
     title = db.Column(db.String(192), nullable=False)
     category_uuid = db.Column(UUID, db.ForeignKey("category.uuid"), nullable=True)

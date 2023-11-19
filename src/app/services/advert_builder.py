@@ -61,8 +61,6 @@ class AdvertBuilder:
         """
         created_objs = 0
         for ad in self.serialized_ads:
-            ad["external_id"] = ad["id"]
-            del ad["id"]
             ad["author"] = ad["user"]
             del ad["user"]
             ad["page_number"] = kwargs.get("page_number")
@@ -77,7 +75,7 @@ class AdvertBuilder:
                     **ad,
                 )
             except (UniqueViolation, sqlalchemy.exc.IntegrityError):
-                print(f"Skipping duplicate ad with id {ad['external_id']}")
+                print(f"Skipping duplicate ad with id {ad['id']}")
                 db.session.rollback()
                 continue
             else:
